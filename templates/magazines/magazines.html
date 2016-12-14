@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load magazine_extras %}
+{% block content %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Magazine Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Subscribed</th>
+                <th>Purchase</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for magazine in magazines %}
+                <tr>
+                    <td>{{ magazine.name }}</td>
+                    <td>{{ magazine.description }}</td>
+                    <td>${{ magazine.price }}</td>
+                    <td>{% mag_sub_expiry magazine user %} </td>
+                    <td>{% paypal_form_for magazine user %} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

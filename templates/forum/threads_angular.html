@@ -1,0 +1,15 @@
+<p>Threads Angular:</p>
+{% for thread in subject.threads.all %}
+     {% include "forum/thread_item.html" %}
+   {% endfor %}
+
+<div class="container" ng-app="pollApp">
+    <div class="panel panel-default" ng-controller="threadCtrl">
+
+        <p>threadCtrl</p>
+
+        <div ng-repeat="thread in threads"><a href="/thread/{$ thread.id $}/"><h4>Thread: {$ thread.name $}</h4></a></div>
+
+    </div>
+
+</div>

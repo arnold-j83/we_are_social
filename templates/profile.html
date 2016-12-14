@@ -1,0 +1,20 @@
+{%  extends "base.html" %}
+{% block content %}
+
+<h2>Success</h2>
+<p>You are logged is as: {{ user.email }}</p>
+<p>Your last login was {{ user.last_login }}</p>
+<p>Your stripe id is: {{ user.stripe_id }}</p>
+
+<h2>Subscription Details</h2>
+    <p>You have: {{ user.subscription_end|timeuntil }} left on your subscription</p>
+    <p><a href="{% url "cancel_subscription" %}" onclick="return cancelSubscriptionCheck();" class="btn btn-danger">Cancel Subscription</a></p>
+    <script type="text/javascript">
+        function cancelSubscriptionCheck() {
+            if (confirm('are you sure?')) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+{% endblock %}
